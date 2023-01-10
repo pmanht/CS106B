@@ -1,6 +1,7 @@
 /* File: StackOverflow.cpp
  *
  * TODO: Edit these comments to tell us what the repeating sequence is.
+ * the cycle is 137, 164, 685, 203, 327 ...
  */
 #include "StackOverflow.h"
 using namespace std;

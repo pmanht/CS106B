@@ -8,15 +8,41 @@
 #include "Testing/OnlyConnectTests.h"
 using namespace std;
 
+string getConsonant (string , string);
+bool checkVowel (char ch);
+
 string onlyConnectize(string phrase) {
     /* TODO: The next few lines just exist to make sure you don't get compiler warning messages
      * when this function isn't implemented. Delete these lines, then implement this function.
      */
-    (void) phrase;
-    return "";
+//    (void) phrase;
+//    return "";
+    return getConsonant(phrase, "");
 }
 
+bool checkVowel (char ch) {
+    if (!isalpha(ch))
+        return true;
+    else
+        return (ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U');
+}
 
+string getConsonant (string input, string output) {
+    if (input == "")
+        return output;
+    else {
+        input[0] = toupper(input[0]);
+        if (checkVowel(input[0])) {
+            input.erase(0, 1);;
+        }
+        else {
+            string ch = input.substr(0, 1);
+            input.erase(0, 1);
+            output.append(ch);
+        }
+        return getConsonant(input, output);
+    }
+}
 
 
 
@@ -30,7 +56,7 @@ ADD_TEST("Converts lower-case to upper-case.") {
 
 ADD_TEST("Handles non-letter characters properly.") {
     EXPECT(onlyConnectize("2.718281828459045") == "");
-    EXPECT(onlyConnectize("'Hi, Mom!'") == "HMM");
+    EXPECT(onlyConnectize("c") == "HMM");
 }
 
 ADD_TEST("Handles single-character inputs.") {

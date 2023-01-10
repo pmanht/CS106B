@@ -11,16 +11,34 @@ string aSequenceOfOrder(int n) {
     /* TODO: The next few lines just exist to make sure you don't get compiler warning messages
      * when this function isn't implemented. Delete these lines, then implement this function.
      */
-    (void) n;
-    return "";
+//    (void) n;
+//    return "";
+    if (n < 0)
+        error("error n < 0");
+    string ret1 = "";
+    if (n == 0)
+        return ret1.append("A");
+    else {
+        ret1.append(aSequenceOfOrder(n-1));
+        return ret1.append(bSequenceOfOrder(n-1));
+    }
 }
 
 string bSequenceOfOrder(int n) {
     /* TODO: The next few lines just exist to make sure you don't get compiler warning messages
      * when this function isn't implemented. Delete these lines, then implement this function.
      */
-    (void) n;
-    return "";
+//    (void) n;
+//    return "";
+    if (n < 0)
+        error("error n < 0");
+    string ret2 = "";
+    if (n == 0)
+        return ret2.append("B");
+    else {
+        ret2.append(bSequenceOfOrder(n-1));
+        return ret2.append(aSequenceOfOrder(n-1));
+    }
 }
 
 
